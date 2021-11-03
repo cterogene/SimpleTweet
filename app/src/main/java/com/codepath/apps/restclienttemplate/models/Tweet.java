@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
+
 public class Tweet {
 
     public String body;
@@ -16,6 +18,7 @@ public class Tweet {
     public long id;
     public User user;
 
+    public Tweet(){}
 
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
