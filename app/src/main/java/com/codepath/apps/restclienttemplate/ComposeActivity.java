@@ -15,6 +15,7 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 public class ComposeActivity extends AppCompatActivity {
     public static final String TAG = "ComposeActivity";
@@ -48,17 +49,12 @@ public class ComposeActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
                         Log.i(TAG, "onSucces to publish tweet");
-                        //etCompose.setText("");
-
-                        Tweet tweet = null;
                         try {
-                            tweet = Tweet.fromJson(json.jsonObject);
-
+                            Tweet tweet = Tweet.fromJson(json.jsonObject);
                         Log.i(TAG, "Published tweet says: "+  tweet.body);
                         Intent intent = new Intent();
-                        intent.putExtra("tweet",Parcels.wrap(tweet));
+                        intent.putExtra("tweet", Parcels.wrap(tweet));
                         setResult(RESULT_OK,intent);
-
                         finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
